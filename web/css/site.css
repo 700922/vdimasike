@@ -26,6 +26,10 @@ body {
     background-color: transparent;
 }
 
+.menu-text {
+    padding:5px 5px 5px 5px;color:#000;
+}
+
 .jumbotron .btn {
     font-size: 21px;
     padding: 14px 24px;
@@ -35,6 +39,55 @@ body {
     color: #c55;
     font-style: italic;
 }
+.text-white {
+    color:#FFFFFF;
+}
+.text-black {
+    color:#000;
+}
+
+.background-yellow {
+    background-color:#FFD700;
+}
+.btn-yellow {
+  color: #000;
+  background-color: #FFD700;
+  border-color: #FFD700;
+}
+
+.nav-pills > li {
+  float: left;
+}
+.nav-pills > li > a {
+  border-radius: 4px;
+}
+.nav-pills > li + li {
+  margin-left: 2px;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #000;
+  background-color: #FFD700;
+}
+.nav-stacked > li {
+  float: none;
+}
+.nav-stacked > li + li {
+  margin-top: 2px;
+  margin-left: 0;
+}
+
+
+.border-black {
+   border: 3px solid #000;
+   border-radius: 10px;
+   box-sizing: content-box;
+}
+a:link {font-size:16px; color:#000}
+a:visited {font-size:16px; color:#001}
+a:hover {font-size:16px; color:#001}
+
 
 /* add sorting icons to gridview sort links */
 a.asc:after, a.desc:after {
@@ -113,3 +166,69 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+.no-indent {text-indent: 0;}
+.no-padding {padding: 0;}
+.p-r-20 {padding-right:20px}
+.p-l-20 {padding-left:20px}
+.p-t-0 {padding-top:0}
+.p-t-5 {padding-top:5px}
+.p-t-50 {padding-top:50px;}
+.p-t-10 {padding-top:10px}
+.p-b-0 {padding-bottom:0}
+.p-b-5 {padding-bottom:5px}
+.m-b-10 {padding-bottom:10px}
+.m-t-0 {margin-top:0}
+.m-t-5 {margin-top:5px}
+.m-t-8 {margin-top:8px}
+.m-t-10 {margin-top:10px}
+.m-t-13 {margin-top:13px}
+.m-t-15 {margin-top:15px}
+.m-t-20 {margin-top:20px}
+.m-t-25 {margin-top:25px}
+.m-t-30 {margin-top:30px}
+.m-t-35 {margin-top:35px}
+.m-t-40 {margin-top:40px}
+.m-t-45 {margin-top:40px}
+.m-t-50 {margin-top:50px}
+.m-t-55 {margin-top:55px}
+.m-t-60 {margin-top:60px}
+.m-b-0 {margin-bottom:0px}
+.m-b-5 {margin-bottom:5px}
+.m-b-10 {margin-bottom:10px}
+.m-b-15 {margin-bottom:15px}
+.m-b-20 {margin-bottom:20px}
+.m-b-25 {margin-bottom:25px}
+.m-b-30 {margin-bottom:30px}
+.m-b-40 {margin-bottom:40px}
+.m-b-50 {margin-bottom:50px}
+.m-l-0 {margin-left:0}
+.m-r-0 {margin-right:0}
+.m-l-43 {margin-left:38px}
+.l-h-14 {line-height:14px}
+.l-h-25 {line-height:25px}
+.b-w-0 {border: 0;}
+.min-h-35 {min-height: 35px;}
+.min-h-55 {min-height: 55px;}
+.min-h-450 {min-height: 450px;}
+.min-h-300 {min-height: 300px;}
+.max-h-250 {max-height: 250px;}
+.max-w-250 {max-width: 250px;}
+.b-r-4 {border-radius:4px}
+.f-s-5 {font-size:5px;}
+.f-s-6 {font-size:6px;}
+.f-s-7 {font-size:7px;}
+.f-s-8 {font-size:8px;}
+.f-s-9 {font-size:9px;}
+.f-s-10 {font-size:10px;}
+.f-s-11 {font-size:11px;}
+.f-s-12 {font-size:12px;}
+.f-s-15 {font-size:15px;}
+.f-s-20 {font-size:20px;}
+.f-s-25 {font-size:25px;}
+.f-s-35 {font-size:35px;}
+.f-s-22 {font-size:22px;}
+.f-s-20 {font-size:20px;}
+.f-s-18 {font-size:18px;}
+.f-s-16 {font-size:16px;}
+.f-s-14 {font-size:14px;}
+.f-w-400 {font-weight:400;}
