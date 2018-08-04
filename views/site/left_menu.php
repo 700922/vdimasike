@@ -2,7 +2,7 @@
 
 use yii\widgets\Menu;
 ?>
-<div class="row m-t-30	">
+<div class="row m-t-30">
 <?= Menu::widget([
 	'items' => [
 		[

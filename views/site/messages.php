@@ -11,11 +11,7 @@ $this->title = 'Сообщения';
 	        	<?= $this->render('left_menu') ?>
 	        </div>
 	        <div class="col-md-10">
-		        <div class="container">
-			        <div class="row">
-		    			<h1>Мои сообщения</h1>
-			        </div>
-			    </div>
+	    		<h1>Мои сообщения<br /><small><i>(Сообщений нет т.к. ты никому не нужен сыч)</i></small></h1>
 	        </div>
         </div>	
 	</div>

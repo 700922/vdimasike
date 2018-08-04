@@ -4,17 +4,13 @@
 
 $this->title = 'Профиль';
 ?>
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
         <div class="col-md-2">
         	<?= $this->render('left_menu') ?>
         </div>
         <div class="col-md-10">
-	        <div class="container">
-		        <div class="row">
-	    			<h1>Лента</h1>
-		        </div>
-		    </div>
+	    	<h1>Лента<br /><small><i>(Лента пуста т.к. ты никому не нужен сыч)</i></small></h1>
         </div>
     </div>	
 </div>
