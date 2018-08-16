@@ -65,6 +65,46 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionFriends()
+    {
+        return $this->render('friends');
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionProfile()
+    {
+        return $this->render('profile');
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionListMessages()
+    {
+        return $this->render('list_messages');
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionNews()
+    {
+        return $this->render('news');
+    }
+
+    /**
      * Login action.
      *
      * @return Response|string

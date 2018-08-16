@@ -2,10 +2,7 @@
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
-
-$this->title = 'About';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Профиль пиздюка';
 ?>
 <div class="container">
     <div class="row">
@@ -13,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $this->render('_left_menu') ?>
         </div>
         <div class="col-md-10">
-                <h1>Бля Пиздец.</h1>
+                <h1>Бля Пиздец Профиль.</h1>
         </div>
     </div>
 </div>
