@@ -10,7 +10,7 @@ $this->title = 'ЧАТ';
             <?= $this->render('_left_menu') ?>
         </div>
         <div class="col-md-10">
-                <h1>Бля Пиздец Братки.</h1>
+                <h1>NAMA Братки.</h1>
         </div>
     </div>
 </div>

@@ -14,7 +14,17 @@ return [
     ],
     'language' => 'en-US',
     'components' => [
-        'db' => $db,
+        'components' => [
+           'db' => [
+               'class' => '\yii\db\Connection',
+               'driverName' => 'mysql',
+               'dsn' => 'mysql:host=127.0.0.1;dbname=local',
+               'username' => 'root',
+               'password' => '123',
+               'charset' => 'utf8',
+           ],
+       ],
+        // 'db' => $db,
         'mailer' => [
             'useFileTransport' => true,
         ],

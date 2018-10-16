@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Профиль пиздюка';
+$this->title = 'Профиль NAMA';
 ?>
 <div class="container">
     <div class="row">
@@ -10,7 +10,10 @@ $this->title = 'Профиль пиздюка';
             <?= $this->render('_left_menu') ?>
         </div>
         <div class="col-md-10">
-                <h1>Бля Пиздец Профиль.</h1>
+            <h1><?= @$model->username ?></h1>
+            <p><?= @$model->password_hash ?></p>
+            <p><?= @$model->auth_key ?></p>
+            <p><?= @$model->status ?></p>
         </div>
     </div>
 </div>

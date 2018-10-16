@@ -7,7 +7,7 @@ use yii\widgets\Menu;
 	'items' => [
 		[
                         'label' => 'Профиль',
-                        'url' => ['site/index'],
+                        'url' => ['site/profile'],
                 ],
 		// ['label' => 'Интеграция API', 'url' => ['user/compare-api']],
                 [

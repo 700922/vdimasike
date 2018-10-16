@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $this->render('_left_menu') ?>
         </div>
         <div class="col-md-10">
-                <h1>Бля Пиздец.</h1>
+                <h1>NAMA.</h1>
         </div>
     </div>
 </div>

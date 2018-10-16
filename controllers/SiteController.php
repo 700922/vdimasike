@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\User;
 use app\models\ContactForm;
 use app\models\SignupForm;
 use app\models\PasswordResetRequestForm;
@@ -84,7 +85,9 @@ class SiteController extends Controller
      */
     public function actionProfile()
     {
-        return $this->render('profile');
+        // var_dump(Yii::$app->user);die;
+        $model = User::findOne(Yii::$app->user->identity->id);
+        return $this->render('profile', ['model' => $model]);
     }
 
     /**
@@ -240,7 +243,7 @@ class SiteController extends Controller
         }
  
         return $this->render('resetPassword', [
-            'model' => $model,
+            'model' => $model,]);
       }
 
 }

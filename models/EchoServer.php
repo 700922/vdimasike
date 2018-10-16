@@ -5,7 +5,7 @@ use consik\yii2websocket\events\WSClientEvent;
 use consik\yii2websocket\WebSocketServer;
 use Ratchet\ConnectionInterface;
 
-class ChatServer extends WebSocketServer
+class EchoServer extends WebSocketServer
 {
 
     public function init()
@@ -43,7 +43,7 @@ class ChatServer extends WebSocketServer
             $result['message'] = 'Enter message';
         }
 
-        $client->send( json_encode($result) );
+        $client->send(json_encode($result));
     }
 
     public function commandSetName(ConnectionInterface $client, $msg)
