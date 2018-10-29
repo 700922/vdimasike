@@ -1,11 +1,18 @@
 var chatUrl = 'ws://localhost:9911';
 
-function displayChatMessage(from, message) {
+function displayChatMessage(response) {
         var date = new Date();
-    	if(from == $('#username').text())
-        	$('#chat').append('<div class="from-me" style="left:0;margin-bottom:5px;"><small>' + from + '</small><br />' + message+ '<br /><small>'+date.toLocaleString()+'</small></div><div class="clear"></div>');
+        if(response.type == 'user-connected'){
+            $('#chat').append('<p class="no-indent text-center">'+response.from.name+' подключился<p>');
+            $('#chat').scrollTop = $('#chat').height;
+            $('#message').val('');
+            return;
+        }
+        console.log(response)
+    	if(response.from.name == $('#username').text())
+        	$('#chat').append('<div class="from-me" style="left:0;margin-bottom:5px;"><small>' + response.from.name + '</small><br />' + response.message+ '<br /><small>'+date.toLocaleString()+'</small></div><div class="clear"></div>');
         else
-        	$('#chat').append('<div class="from-them"  style="right:0;margin-bottom:5px;"><small>' + from+ '</small><br />' + message + '<br /><small>'+date.toLocaleString()+'</small></div><div class="clear"></div>');
+        	$('#chat').append('<div class="from-them"  style="right:0;margin-bottom:5px;"><small>' + response.from.name+ '</small><br />' + response.message + '<br /><small>'+date.toLocaleString()+'</small></div><div class="clear"></div>');
         $('#chat').scrollTop = $('#chat').height;
         $('#message').val('');
 }
@@ -23,7 +30,7 @@ function removeUserTypingMessage(from) {
 
 var conn;
 
-function connectToChat() {
+function connectToChat(id = '2') {
     conn = new WebSocket(chatUrl);
 
     conn.onopen = function() {
@@ -31,11 +38,10 @@ function connectToChat() {
         document.getElementById('messageDialog').style.display = 'block';
 
         var params = {
-            'roomId': '1',
+            'roomId': id,
             'userName': $('#username').text(),
             'action': 'connect'
         };
-        console.log(params);
         conn.send(JSON.stringify(params));
     };
 
@@ -43,20 +49,20 @@ function connectToChat() {
         var data = JSON.parse(e.data);
 
         if (data.hasOwnProperty('message') && data.hasOwnProperty('from')) {
-            displayChatMessage(data.from.name, data.message);
+            displayChatMessage(data);
         }
         else if (data.hasOwnProperty('message')) {
-            displayChatMessage('ChatBOt', data.message);
+            displayChatMessage(data);
         }
         else if (data.hasOwnProperty('type')) {
             if (data.type == 'list-users' && data.hasOwnProperty('clients')) {
-                displayChatMessage('ChatBOt', 'Уже ' + data.clients.length + ' урод(а) в сети');
+                displayChatMessage(data);
             }
             else if (data.type == 'user-started-typing') {
-                displayUserTypingMessage(data.from)
+                displayUserTypingMessage(data)
             }
             else if (data.type == 'user-stopped-typing') {
-                removeUserTypingMessage(data.from);
+                removeUserTypingMessage(data);
             }
         }
     };
