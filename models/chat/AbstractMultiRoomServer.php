@@ -93,7 +93,7 @@ abstract class AbstractMultiRoomServer implements MessageComponentInterface
      * @param int $timestamp
      * @return string
      */
-    abstract protected function logMessageReceived(ConnectedClientInterface $from, $message, $timestamp);
+    abstract protected function logMessageReceived(ConnectedClientInterface $from, $roomId, $message, $timestamp);
 
     /**
      * @param ConnectionInterface $conn
@@ -153,8 +153,8 @@ abstract class AbstractMultiRoomServer implements MessageComponentInterface
                 $roomId = $this->makeRoom($msg['roomId']);
                 $client = $this->createClient($conn, $msg['userName']);
                 $this->connectUserToRoom($client, $roomId);
-                $this->sendUserConnectedMessage($client, $roomId);
-                $this->sendUserWelcomeMessage($client, $roomId);
+                $this->sendUserConnectedMessage($client, $roomId,$msg['userName']);
+                $this->sendUserWelcomeMessage($client, $roomId,$msg['userName']);
                 $this->sendListUsersMessage($client, $roomId);
                 break;
             case self::ACTION_LIST_USERS:
@@ -284,11 +284,12 @@ abstract class AbstractMultiRoomServer implements MessageComponentInterface
      * @param ConnectedClientInterface $client
      * @param $roomId
      */
-    protected function sendUserConnectedMessage(ConnectedClientInterface $client, $roomId)
+    protected function sendUserConnectedMessage(ConnectedClientInterface $client, $roomId, $userName)
     {
         $dataPacket = array(
             'type'=>self::PACKET_TYPE_USER_CONNECTED,
             'timestamp'=>time(),
+            'from'=>['name'=>$userName],
             'message'=>$this->makeUserConnectedMessage($client, time()),
         );
 
@@ -301,11 +302,12 @@ abstract class AbstractMultiRoomServer implements MessageComponentInterface
      * @param ConnectedClientInterface $client
      * @param $roomId
      */
-    protected function sendUserWelcomeMessage(ConnectedClientInterface $client, $roomId)
+    protected function sendUserWelcomeMessage(ConnectedClientInterface $client, $roomId, $userName)
     {
         $dataPacket = array(
             'type'=>self::PACKET_TYPE_USER_CONNECTED,
             'timestamp'=>time(),
+            'from'=> ['name'=>$userName],
             'message'=>$this->makeUserWelcomeMessage($client, time()),
         );
 
@@ -370,7 +372,7 @@ abstract class AbstractMultiRoomServer implements MessageComponentInterface
     {
         $clients = array();
         foreach ($this->findRoomClients($roomId) AS $roomClient) {
-            $clients[] = array(
+            $clients = array(
                 'name'=>$roomClient->getName(),
             );
         }
@@ -378,7 +380,7 @@ abstract class AbstractMultiRoomServer implements MessageComponentInterface
         $dataPacket = array(
             'type'=>self::PACKET_TYPE_USER_LIST,
             'timestamp'=>time(),
-            'clients'=>$clients,
+            'from'=>$clients,
         );
 
         $this->sendData($client, $dataPacket);
@@ -459,7 +461,6 @@ abstract class AbstractMultiRoomServer implements MessageComponentInterface
         if (!isset($this->rooms[$roomId])) {
             $this->rooms[$roomId] = array();
         }
-
         return $roomId;
     }
 

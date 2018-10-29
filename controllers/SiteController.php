@@ -13,6 +13,8 @@ use app\models\ContactForm;
 use app\models\SignupForm;
 use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
+use app\models\Rooms;
+use app\models\Messages;
 
 class SiteController extends Controller
 {
@@ -97,7 +99,25 @@ class SiteController extends Controller
      */
     public function actionListMessages()
     {
-        return $this->render('list_messages');
+        $model = new Rooms();
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
+            $model->save();
+            // var_dump($model->errors);die;
+            return $this->refresh();
+        }
+        $model->user_id = Yii::$app->user->identity->id;
+        return $this->render('list_messages', ['list' => Rooms::getList(Yii::$app->user->identity->id), 'model' => $model]);
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionRoom($id)
+    {
+
+        return $this->render('room', ['roomId' => $id, 'messages' => Messages::find()->where(['room_id' => $id])->all()]);
     }
 
     /**

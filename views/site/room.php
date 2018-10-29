@@ -1,9 +1,10 @@
 <?php
+use app\models\User;
 
 /* @var $this yii\web\View */
 
 $this->title = 'ЧАТ';
-$this->registerJs('connectToChat();', \yii\web\View::POS_READY);
+$this->registerJs('connectToChat('.$roomId.');', \yii\web\View::POS_READY);
 ?>
 
 <style type="text/css">
@@ -17,7 +18,17 @@ $this->registerJs('connectToChat();', \yii\web\View::POS_READY);
         <div class="col-md-10">
             <div class="row" style="overflow-y: scroll; position:fixed; bottom:150px;width: 75%;">
 				<section>
-					<div id="chat"></div>
+					<div id="chat">
+						<?php if($messages) : ?>
+							<?php foreach($messages as $message) : ?>
+								<?php if($message->user_id == Yii::$app->user->identity->id) : ?>
+									<div class="from-me" style="left:0;margin-bottom:5px;"><small><?= Yii::$app->user->identity->username ?></small><br /><?= $message->message ?><br /><small><?= $message->create_at ?></small></div><div class="clear"></div>
+								<?php else : ?>
+									<div class="from-them" style="right:0;margin-bottom:5px;"><small><?= User::findOne($message->user_id)->username ?></small><br /><?= $message->message ?><br /><small><?= $message->create_at ?></small></div><div class="clear"></div>
+								<?php endif ?>
+							<?php endforeach?>
+						<?php endif ?>
+					</div>
 				</section>
 			</div>
 
