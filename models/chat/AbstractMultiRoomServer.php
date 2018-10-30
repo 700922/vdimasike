@@ -11,6 +11,7 @@ use Ratchet\MessageComponentInterface;
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
 use ReflectionClass;
+use yii\helpers\Html;
 
 abstract class AbstractMultiRoomServer implements MessageComponentInterface
 {
@@ -34,7 +35,7 @@ abstract class AbstractMultiRoomServer implements MessageComponentInterface
      * @param string $ip
      * @return IoServer
      */
-    public static function run(AbstractMultiRoomServer $chatServer, $port, $ip='0.0.0.0')
+    public static function run(AbstractMultiRoomServer $chatServer, $port, $ip='192.168.1.105')
     {
         $wsServer = new WsServer($chatServer);
         $http = new HttpServer($wsServer);
@@ -273,7 +274,7 @@ abstract class AbstractMultiRoomServer implements MessageComponentInterface
             'type'=>self::PACKET_TYPE_MESSAGE,
             'from'=>$client->asArray(),
             'timestamp'=>$timestamp,
-            'message'=>$this->makeMessageReceivedMessage($client, $message, $timestamp),
+            'message'=>Html::encode($this->makeMessageReceivedMessage($client, $message, $timestamp)),
         );
 
         $clients = $this->findRoomClients($roomId);

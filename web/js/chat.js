@@ -1,4 +1,4 @@
-var chatUrl = 'ws://localhost:9911';
+var chatUrl = 'ws://192.168.1.105:9911';
 
 function displayChatMessage(response) {
         var date = new Date();
