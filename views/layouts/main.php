@@ -23,7 +23,7 @@ AppAsset::register($this);
     <title>Димоныч</title>
     <?php $this->head() ?>
 </head>
-<body>
+<body style="background-color: #eee;">
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -77,5 +77,12 @@ AppAsset::register($this);
 
 <?php $this->endBody() ?>
 </body>
+<!-- <footer class="footer">
+    <div class="container">
+        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+
+        <p class="pull-right"><?= Yii::powered() ?></p>
+    </div>
+</footer> -->
 </html>
 <?php $this->endPage() ?>

@@ -1,9 +1,9 @@
 var chatUrl = 'ws://192.168.1.105:9911';
-
+$(".chat-history").scrollTop($(".chat-history")[0].scrollHeight);
 function displayChatMessage(response) {
         var date = new Date();
         if(response.type == 'user-connected'){
-            $('#chat').append('<p class="no-indent text-center">'+response.from.name+' подключился<p>');
+            $('#chat').append('<p class="no-indent text-center" style="padding:5px;border-top:1px solid #aaa;border-bottom:1px solid #aaa; margin-top:5px; border-style:dashed; border-left:0;border-right:0;">'+response.from.name+' подключился<p>');
             $('#chat').scrollTop = $('#chat').height;
             $('#message').val('');
             return;
@@ -65,6 +65,7 @@ function connectToChat(id = '2') {
                 removeUserTypingMessage(data);
             }
         }
+        $(".chat-history").scrollTop($(".chat-history")[0].scrollHeight);
     };
 
     conn.onerror = function(e) {
